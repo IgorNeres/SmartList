@@ -18,7 +18,7 @@ import org.kordamp.ikonli.swing.FontIcon;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class CatalogoProdutosSwing {
+public class PainelPrincipal {
 
     private final ConcurrentHashMap<String, ImageIcon> cacheImagens = new ConcurrentHashMap<>();
     private String categoriaFiltroAtiva = "Todas";
@@ -31,11 +31,14 @@ public class CatalogoProdutosSwing {
             } catch (Exception ignored) {
                 // Mantém o Look & Feel padrão da JVM
             }
-            new CatalogoProdutosSwing().exibirJanela();
+            new PainelPrincipal().exibirJanela();
         });
     }
 
     private void exibirJanela() {
+
+        Color corFundoPagina = new Color(241, 245, 249);
+        Color corAzulPrimario = new Color(55, 48, 224);
 
         JFrame janelaPrincipal = new JFrame("Lista de Compras Inteligente — Java Swing");
         janelaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +48,8 @@ public class CatalogoProdutosSwing {
         // Conteúdo principal rolável
         JPanel painelConteudoPrincipal = new JPanel();
         painelConteudoPrincipal.setLayout(new BoxLayout(painelConteudoPrincipal, BoxLayout.Y_AXIS));
-        painelConteudoPrincipal.setBackground(new Color(241, 245, 249));
+        painelConteudoPrincipal.setOpaque(true);
+        painelConteudoPrincipal.setBackground(corFundoPagina);
         painelConteudoPrincipal.setBorder(BorderFactory.createEmptyBorder(14, 4, 16, 14));
 
         // ==========================================
@@ -66,6 +70,8 @@ public class CatalogoProdutosSwing {
         lblLogoSistema.setToolTipText("smartList — Organização Inteligente");
         lblLogoSistema.setAlignmentY(Component.CENTER_ALIGNMENT);
         painelBarraSuperior.add(lblLogoSistema);
+
+        painelBarraSuperior.add(Box.createRigidArea(new Dimension(14, 20)));
 
         FontIcon iconeImportar = FontIcon.of(FontAwesomeSolid.FILE_IMPORT, 11, new Color(51, 65, 85));
         JButton btnImportarLista = new JButton("Importar Lista (.txt)", iconeImportar);
@@ -140,7 +146,7 @@ public class CatalogoProdutosSwing {
         painelDefinirOrcamento.setBackground(Color.WHITE);
         painelDefinirOrcamento.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        FontIcon iconeCarteira = FontIcon.of(FontAwesomeSolid.WALLET, 15, new Color(55, 48, 224));
+        FontIcon iconeCarteira = FontIcon.of(FontAwesomeSolid.WALLET, 15, corAzulPrimario);
         JLabel lblTituloOrcamento = new JLabel("Controle Orçamentário (Teto Mensal)", iconeCarteira, JLabel.LEFT);
         lblTituloOrcamento.setFont(new Font("SansSerif", Font.BOLD, 16));
         lblTituloOrcamento.setIconTextGap(8);
@@ -155,7 +161,7 @@ public class CatalogoProdutosSwing {
 
         // Botão Azul (mantido azul)
         JButton btnDefinirOrcamento = new JButton("Definir");
-        btnDefinirOrcamento.setBackground(new Color(55, 48, 224));
+        btnDefinirOrcamento.setBackground(corAzulPrimario);
         btnDefinirOrcamento.setForeground(Color.WHITE);
         btnDefinirOrcamento.setFont(new Font("SansSerif", Font.BOLD, 12));
         btnDefinirOrcamento.setFocusPainted(false);
@@ -241,6 +247,7 @@ public class CatalogoProdutosSwing {
 
         JProgressBar barraProgressoOrcamento = new JProgressBar();
         barraProgressoOrcamento.setValue(10);
+        barraProgressoOrcamento.setForeground(corAzulPrimario);
         barraProgressoOrcamento.setMaximumSize(new Dimension(Integer.MAX_VALUE, 16));
         barraProgressoOrcamento.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -269,7 +276,7 @@ public class CatalogoProdutosSwing {
         JPanel painelTituloNovoItem = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         painelTituloNovoItem.setOpaque(false);
 
-        FontIcon iconeNovoItem = FontIcon.of(FontAwesomeSolid.PLUS_CIRCLE, 17, new Color(55, 48, 224));
+        FontIcon iconeNovoItem = FontIcon.of(FontAwesomeSolid.PLUS_CIRCLE, 17, corAzulPrimario);
         JLabel lblTituloNovoItem = new JLabel("Novo Item", iconeNovoItem, JLabel.LEFT);
         lblTituloNovoItem.setFont(new Font("SansSerif", Font.BOLD, 16));
         lblTituloNovoItem.setIconTextGap(8);
@@ -278,7 +285,7 @@ public class CatalogoProdutosSwing {
         lblAtalhoF2.setFont(new Font("Monospaced", Font.BOLD, 11));
         lblAtalhoF2.setForeground(new Color(71, 85, 105));
         lblAtalhoF2.setOpaque(true);
-        lblAtalhoF2.setBackground(new Color(241, 245, 249));
+        lblAtalhoF2.setBackground(corFundoPagina);
         lblAtalhoF2.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(203, 213, 225)),
                 BorderFactory.createEmptyBorder(2, 6, 2, 6)));
@@ -398,7 +405,7 @@ public class CatalogoProdutosSwing {
         btnUnidadeUn.setPreferredSize(new Dimension(52, 26));
         btnUnidadeUn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnUnidadeUn.setBackground(Color.WHITE);
-        btnUnidadeUn.setForeground(new Color(55, 48, 224));
+        btnUnidadeUn.setForeground(corAzulPrimario);
         btnUnidadeUn.setFont(new Font("SansSerif", Font.BOLD, 12));
 
         JToggleButton btnUnidadeKg = new JToggleButton("kg", false);
@@ -421,7 +428,7 @@ public class CatalogoProdutosSwing {
 
         btnUnidadeUn.addActionListener(e -> {
             btnUnidadeUn.setBackground(Color.WHITE);
-            btnUnidadeUn.setForeground(new Color(55, 48, 224));
+            btnUnidadeUn.setForeground(corAzulPrimario);
             btnUnidadeUn.setFont(new Font("SansSerif", Font.BOLD, 12));
             btnUnidadeKg.setBackground(new Color(243, 244, 246));
             btnUnidadeKg.setForeground(new Color(100, 116, 139));
@@ -430,7 +437,7 @@ public class CatalogoProdutosSwing {
 
         btnUnidadeKg.addActionListener(e -> {
             btnUnidadeKg.setBackground(Color.WHITE);
-            btnUnidadeKg.setForeground(new Color(55, 48, 224));
+            btnUnidadeKg.setForeground(corAzulPrimario);
             btnUnidadeKg.setFont(new Font("SansSerif", Font.BOLD, 12));
             btnUnidadeUn.setBackground(new Color(243, 244, 246));
             btnUnidadeUn.setForeground(new Color(100, 116, 139));
@@ -482,7 +489,7 @@ public class CatalogoProdutosSwing {
         JButton btnAdicionarNovoItem = new JButton("+ Adicionar");
         btnAdicionarNovoItem.setFont(new Font("SansSerif", Font.BOLD, 12));
         btnAdicionarNovoItem.setForeground(Color.WHITE);
-        btnAdicionarNovoItem.setBackground(new Color(55, 48, 224));
+        btnAdicionarNovoItem.setBackground(corAzulPrimario);
         btnAdicionarNovoItem.setFocusPainted(false);
         btnAdicionarNovoItem.setBorderPainted(false);
         btnAdicionarNovoItem.setContentAreaFilled(false);
@@ -539,40 +546,12 @@ public class CatalogoProdutosSwing {
         painelAbasCategorias.setOpaque(false);
 
         JButton btnAbaTodas = new JButton("Todas (5)");
-        btnAbaTodas.setFont(new Font("SansSerif", Font.BOLD, 11));
-        btnAbaTodas.setBackground(Color.WHITE);
-        btnAbaTodas.setForeground(new Color(51, 65, 85));
-        btnAbaTodas.setFocusPainted(false);
-        btnAbaTodas.setContentAreaFilled(false);
-        btnAbaTodas.setOpaque(true);
-        btnAbaTodas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnAbaTodas.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(203, 213, 225)),
-                BorderFactory.createEmptyBorder(6, 12, 6, 12)));
-
         JButton btnAbaHortifruti = new JButton("Hortifruti (3)");
-        btnAbaHortifruti.setFont(new Font("SansSerif", Font.BOLD, 11));
-        btnAbaHortifruti.setBackground(Color.WHITE);
-        btnAbaHortifruti.setForeground(new Color(51, 65, 85));
-        btnAbaHortifruti.setFocusPainted(false);
-        btnAbaHortifruti.setContentAreaFilled(false);
-        btnAbaHortifruti.setOpaque(true);
-        btnAbaHortifruti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnAbaHortifruti.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(203, 213, 225)),
-                BorderFactory.createEmptyBorder(6, 12, 6, 12)));
-
         JButton btnAbaAlimentos = new JButton("Alimentos (2)");
-        btnAbaAlimentos.setFont(new Font("SansSerif", Font.BOLD, 11));
-        btnAbaAlimentos.setBackground(Color.WHITE);
-        btnAbaAlimentos.setForeground(new Color(51, 65, 85));
-        btnAbaAlimentos.setFocusPainted(false);
-        btnAbaAlimentos.setContentAreaFilled(false);
-        btnAbaAlimentos.setOpaque(true);
-        btnAbaAlimentos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnAbaAlimentos.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(203, 213, 225)),
-                BorderFactory.createEmptyBorder(6, 12, 6, 12)));
+
+        estilizarAbaFiltro(btnAbaTodas, true, corAzulPrimario);
+        estilizarAbaFiltro(btnAbaHortifruti, false, corAzulPrimario);
+        estilizarAbaFiltro(btnAbaAlimentos, false, corAzulPrimario);
 
         painelAbasCategorias.add(btnAbaTodas);
         painelAbasCategorias.add(btnAbaHortifruti);
@@ -603,7 +582,7 @@ public class CatalogoProdutosSwing {
 
         // --- Cabeçalho das Colunas da Tabela ---
         JPanel cabecalhoTabelaItens = new JPanel(new GridBagLayout());
-        cabecalhoTabelaItens.setBackground(new Color(241, 245, 249));
+        cabecalhoTabelaItens.setBackground(corFundoPagina);
         cabecalhoTabelaItens.setBorder(BorderFactory.createCompoundBorder(
                 new MatteBorder(0, 0, 1, 0, new Color(226, 232, 240)),
                 BorderFactory.createEmptyBorder(9, 10, 9, 10)));
@@ -727,7 +706,7 @@ public class CatalogoProdutosSwing {
         JPanel painelLinhaItem1 = new JPanel(new GridBagLayout());
         painelLinhaItem1.setBackground(new Color(248, 250, 252));
         painelLinhaItem1.setBorder(BorderFactory.createCompoundBorder(
-                new MatteBorder(0, 0, 1, 0, new Color(241, 245, 249)),
+                new MatteBorder(0, 0, 1, 0, corFundoPagina),
                 BorderFactory.createEmptyBorder(9, 10, 9, 10)));
         painelLinhaItem1.setAlignmentX(Component.LEFT_ALIGNMENT);
         painelLinhaItem1.setMaximumSize(new Dimension(Integer.MAX_VALUE, 58));
@@ -854,7 +833,7 @@ public class CatalogoProdutosSwing {
         JPanel painelLinhaItem2 = new JPanel(new GridBagLayout());
         painelLinhaItem2.setBackground(new Color(248, 250, 252));
         painelLinhaItem2.setBorder(BorderFactory.createCompoundBorder(
-                new MatteBorder(0, 0, 1, 0, new Color(241, 245, 249)),
+                new MatteBorder(0, 0, 1, 0, corFundoPagina),
                 BorderFactory.createEmptyBorder(9, 10, 9, 10)));
         painelLinhaItem2.setAlignmentX(Component.LEFT_ALIGNMENT);
         painelLinhaItem2.setMaximumSize(new Dimension(Integer.MAX_VALUE, 58));
@@ -981,7 +960,7 @@ public class CatalogoProdutosSwing {
         JPanel painelLinhaItem3 = new JPanel(new GridBagLayout());
         painelLinhaItem3.setBackground(Color.WHITE);
         painelLinhaItem3.setBorder(BorderFactory.createCompoundBorder(
-                new MatteBorder(0, 0, 1, 0, new Color(241, 245, 249)),
+                new MatteBorder(0, 0, 1, 0, corFundoPagina),
                 BorderFactory.createEmptyBorder(9, 10, 9, 10)));
         painelLinhaItem3.setAlignmentX(Component.LEFT_ALIGNMENT);
         painelLinhaItem3.setMaximumSize(new Dimension(Integer.MAX_VALUE, 58));
@@ -1125,7 +1104,7 @@ public class CatalogoProdutosSwing {
         JPanel painelLinhaItem4 = new JPanel(new GridBagLayout());
         painelLinhaItem4.setBackground(new Color(248, 250, 252));
         painelLinhaItem4.setBorder(BorderFactory.createCompoundBorder(
-                new MatteBorder(0, 0, 1, 0, new Color(241, 245, 249)),
+                new MatteBorder(0, 0, 1, 0, corFundoPagina),
                 BorderFactory.createEmptyBorder(9, 10, 9, 10)));
         painelLinhaItem4.setAlignmentX(Component.LEFT_ALIGNMENT);
         painelLinhaItem4.setMaximumSize(new Dimension(Integer.MAX_VALUE, 58));
@@ -1252,7 +1231,7 @@ public class CatalogoProdutosSwing {
         JPanel painelLinhaItem5 = new JPanel(new GridBagLayout());
         painelLinhaItem5.setBackground(Color.WHITE);
         painelLinhaItem5.setBorder(BorderFactory.createCompoundBorder(
-                new MatteBorder(0, 0, 1, 0, new Color(241, 245, 249)),
+                new MatteBorder(0, 0, 1, 0, corFundoPagina),
                 BorderFactory.createEmptyBorder(9, 10, 9, 10)));
         painelLinhaItem5.setAlignmentX(Component.LEFT_ALIGNMENT);
         painelLinhaItem5.setMaximumSize(new Dimension(Integer.MAX_VALUE, 58));
@@ -1541,16 +1520,25 @@ public class CatalogoProdutosSwing {
 
         btnAbaTodas.addActionListener(e -> {
             categoriaFiltroAtiva = "Todas";
+            estilizarAbaFiltro(btnAbaTodas, true, corAzulPrimario);
+            estilizarAbaFiltro(btnAbaHortifruti, false, corAzulPrimario);
+            estilizarAbaFiltro(btnAbaAlimentos, false, corAzulPrimario);
             atualizarListaEProgresso.run();
         });
 
         btnAbaHortifruti.addActionListener(e -> {
             categoriaFiltroAtiva = "Hortifruti";
+            estilizarAbaFiltro(btnAbaTodas, false, corAzulPrimario);
+            estilizarAbaFiltro(btnAbaHortifruti, true, corAzulPrimario);
+            estilizarAbaFiltro(btnAbaAlimentos, false, corAzulPrimario);
             atualizarListaEProgresso.run();
         });
 
         btnAbaAlimentos.addActionListener(e -> {
             categoriaFiltroAtiva = "Alimentos";
+            estilizarAbaFiltro(btnAbaTodas, false, corAzulPrimario);
+            estilizarAbaFiltro(btnAbaHortifruti, false, corAzulPrimario);
+            estilizarAbaFiltro(btnAbaAlimentos, true, corAzulPrimario);
             atualizarListaEProgresso.run();
         });
 
@@ -1577,7 +1565,7 @@ public class CatalogoProdutosSwing {
         });
 
         // ==========================================
-        // MENU LATERAL (BOTÕES NO ESTILO btnMarcarTodos)
+        // MENU LATERAL (COM ITEM ATIVO DESTACADO EM AZUL)
         // ==========================================
 
         JPanel painelMenuLateral = new JPanel();
@@ -1594,7 +1582,7 @@ public class CatalogoProdutosSwing {
         layoutMenuLateral.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         painelMenuLateral.setLayout(layoutMenuLateral);
 
-        FontIcon iconeMenuLista = FontIcon.of(FontAwesomeSolid.LIST, 11, new Color(51, 65, 85));
+        FontIcon iconeMenuLista = FontIcon.of(FontAwesomeSolid.LIST, 11, Color.WHITE);
         FontIcon iconeMenuOrcamento = FontIcon.of(FontAwesomeSolid.WALLET, 11, new Color(51, 65, 85));
         FontIcon iconeMenuCatalogo = FontIcon.of(FontAwesomeSolid.SHOPPING_CART, 11, new Color(51, 65, 85));
         FontIcon iconeMenuListasSalvas = FontIcon.of(FontAwesomeSolid.BOOKMARK, 11, new Color(51, 65, 85));
@@ -1607,20 +1595,18 @@ public class CatalogoProdutosSwing {
         gbcEspacoTopoMenuLateral.gridy = 1;
         painelMenuLateral.add(espacoTopoMenuLateral, gbcEspacoTopoMenuLateral);
 
+        // Item ativo no menu lateral: Lista Atual
         JButton btnMenuListaAtual = new JButton("Lista Atual", iconeMenuLista);
         btnMenuListaAtual.setHorizontalAlignment(SwingConstants.LEFT);
         btnMenuListaAtual.setFont(new Font("SansSerif", Font.BOLD, 11));
-        btnMenuListaAtual.setBackground(Color.WHITE);
-        btnMenuListaAtual.setForeground(new Color(51, 65, 85));
+        btnMenuListaAtual.setBackground(corAzulPrimario);
+        btnMenuListaAtual.setForeground(Color.WHITE);
         btnMenuListaAtual.setFocusPainted(false);
+        btnMenuListaAtual.setBorderPainted(false);
         btnMenuListaAtual.setContentAreaFilled(false);
         btnMenuListaAtual.setOpaque(true);
         btnMenuListaAtual.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnMenuListaAtual.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(203, 213, 225)),
-                BorderFactory.createEmptyBorder(6, 12, 6, 12)));
-        btnMenuListaAtual.addActionListener(e ->
-                JOptionPane.showMessageDialog(janelaPrincipal, "Navegar para: Lista Atual"));
+        btnMenuListaAtual.setBorder(BorderFactory.createEmptyBorder(7, 13, 7, 13));
         GridBagConstraints gbcBtnListaAtual = new GridBagConstraints();
         gbcBtnListaAtual.anchor = GridBagConstraints.NORTH;
         gbcBtnListaAtual.fill = GridBagConstraints.HORIZONTAL;
@@ -1701,10 +1687,15 @@ public class CatalogoProdutosSwing {
         JScrollPane painelRolagemPrincipal = new JScrollPane(painelConteudoPrincipal);
         painelRolagemPrincipal.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         painelRolagemPrincipal.getVerticalScrollBar().setUnitIncrement(16);
+        painelRolagemPrincipal.setOpaque(true);
+        painelRolagemPrincipal.setBackground(corFundoPagina);
         painelRolagemPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 12, 0, 0));
-        painelRolagemPrincipal.getViewport().setBackground(new Color(241, 245, 249));
+        painelRolagemPrincipal.getViewport().setOpaque(true);
+        painelRolagemPrincipal.getViewport().setBackground(corFundoPagina);
 
         JPanel painelAreaCentral = new JPanel(new BorderLayout());
+        painelAreaCentral.setOpaque(true);
+        painelAreaCentral.setBackground(corFundoPagina);
         painelAreaCentral.add(painelMenuLateral, BorderLayout.WEST);
         painelAreaCentral.add(painelRolagemPrincipal, BorderLayout.CENTER);
 
@@ -1713,6 +1704,27 @@ public class CatalogoProdutosSwing {
         janelaPrincipal.getContentPane().add(painelAreaCentral, BorderLayout.CENTER);
 
         janelaPrincipal.setVisible(true);
+    }
+
+    private void estilizarAbaFiltro(JButton botao, boolean ativo, Color corAzulPrimario) {
+        botao.setFont(new Font("SansSerif", Font.BOLD, 11));
+        botao.setFocusPainted(false);
+        botao.setContentAreaFilled(false);
+        botao.setOpaque(true);
+        botao.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        if (ativo) {
+            botao.setBackground(corAzulPrimario);
+            botao.setForeground(Color.WHITE);
+            botao.setBorderPainted(false);
+            botao.setBorder(BorderFactory.createEmptyBorder(7, 13, 7, 13));
+        } else {
+            botao.setBackground(Color.WHITE);
+            botao.setForeground(new Color(51, 65, 85));
+            botao.setBorderPainted(true);
+            botao.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(new Color(203, 213, 225)),
+                    BorderFactory.createEmptyBorder(6, 12, 6, 12)));
+        }
     }
 
     // ==========================================
