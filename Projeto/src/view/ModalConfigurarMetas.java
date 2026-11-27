@@ -36,7 +36,6 @@ public class ModalConfigurarMetas extends JDialog {
 
     private JFormattedTextField txtTetoGlobal;
     private JComboBox<String> comboPeriodoVigencia;
-    private JCheckBox chkNotificarCabecalho;
     private JLabel lblSomaCategorizada;
     private JLabel lblTotalMetas;
 
@@ -200,18 +199,10 @@ public class ModalConfigurarMetas extends JDialog {
         gridCamposTopo.add(colTeto);
         gridCamposTopo.add(colPeriodo);
 
-        chkNotificarCabecalho = new JCheckBox("Notificar automaticamente no cabeçalho quando atingir 80% do teto", true);
-        chkNotificarCabecalho.setOpaque(false);
-        chkNotificarCabecalho.setFont(new Font("SansSerif", Font.PLAIN, 11));
-        chkNotificarCabecalho.setForeground(new Color(51, 65, 85));
-        chkNotificarCabecalho.setFocusPainted(false);
-        chkNotificarCabecalho.setAlignmentX(Component.LEFT_ALIGNMENT);
-
         cardTetoGlobal.add(lblSecao1);
         cardTetoGlobal.add(Box.createVerticalStrut(10));
         cardTetoGlobal.add(gridCamposTopo);
         cardTetoGlobal.add(Box.createVerticalStrut(10));
-        cardTetoGlobal.add(chkNotificarCabecalho);
 
         painelCorpo.add(cardTetoGlobal);
         painelCorpo.add(Box.createVerticalStrut(16));
@@ -404,7 +395,7 @@ public class ModalConfigurarMetas extends JDialog {
         JPanel painelBotoesDireita = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
         painelBotoesDireita.setOpaque(false);
 
-        JButton btnCancelar = new JButton("Cancelar [Esc]");
+        JButton btnCancelar = new JButton("Cancelar");
         btnCancelar.setFont(new Font("SansSerif", Font.BOLD, 11));
         btnCancelar.setBackground(Color.WHITE);
         btnCancelar.setForeground(new Color(51, 65, 85));
@@ -417,7 +408,7 @@ public class ModalConfigurarMetas extends JDialog {
                 BorderFactory.createEmptyBorder(7, 14, 7, 14)));
         btnCancelar.addActionListener(e -> fecharSemSalvar());
 
-        JButton btnSalvar = new JButton("Salvar Configurações [Enter]",
+        JButton btnSalvar = new JButton("Salvar Configurações",
                 FontIcon.of(FontAwesomeSolid.CHECK, 11, Color.WHITE));
         btnSalvar.setFont(new Font("SansSerif", Font.BOLD, 11));
         btnSalvar.setBackground(AZUL_PRIMARIO);

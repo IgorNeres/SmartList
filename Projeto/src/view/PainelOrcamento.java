@@ -813,43 +813,7 @@ public class PainelOrcamento {
         painelConteudoPrincipal.add(painelHistoricoCompras);
         painelConteudoPrincipal.add(Box.createVerticalStrut(14));
 
-        // ==========================================
-        // 5. RODAPÉ INFORMATIVO DE ATALHOS
-        // ==========================================
-
-        JPanel painelAtalhosRodape = new JPanel();
-        painelAtalhosRodape.setLayout(new BoxLayout(painelAtalhosRodape, BoxLayout.Y_AXIS));
-        painelAtalhosRodape.setAlignmentX(Component.LEFT_ALIGNMENT);
-        painelAtalhosRodape.setBackground(new Color(248, 250, 252));
-        painelAtalhosRodape.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(226, 232, 240)),
-                BorderFactory.createEmptyBorder(10, 14, 10, 14)));
-        painelAtalhosRodape.setMaximumSize(new Dimension(Integer.MAX_VALUE, 64));
-
-        JLabel lblAtalhosTeclado = new JLabel(
-                "<html>"
-                        + "<span style='background:#E2E8F0;color:#334155;font-weight:bold;'>&nbsp;F3&nbsp;</span> Nova Meta Orçamentária &nbsp;&nbsp;&nbsp;"
-                        + "<span style='background:#E2E8F0;color:#334155;font-weight:bold;'>&nbsp;Ctrl+P&nbsp;</span> Imprimir / Exportar Relatório &nbsp;&nbsp;&nbsp;"
-                        + "<span style='background:#E2E8F0;color:#334155;font-weight:bold;'>&nbsp;F5&nbsp;</span> Recalcular Indicadores &nbsp;&nbsp;&nbsp;"
-                        + "<span style='background:#E2E8F0;color:#334155;font-weight:bold;'>&nbsp;Alt+D&nbsp;</span> Detalhamento por Item"
-                        + "</html>");
-        lblAtalhosTeclado.setFont(new Font("SansSerif", Font.PLAIN, 11));
-        lblAtalhosTeclado.setForeground(new Color(71, 85, 105));
-        lblAtalhosTeclado.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        JLabel lblInfoAmbiente = new JLabel("Ambiente Desktop Swing FlatLaf • Modo Integrado",
-                FontIcon.of(FontAwesomeSolid.DESKTOP, 11, new Color(100, 116, 139)), JLabel.LEFT);
-        lblInfoAmbiente.setFont(new Font("SansSerif", Font.PLAIN, 11));
-        lblInfoAmbiente.setForeground(new Color(100, 116, 139));
-        lblInfoAmbiente.setIconTextGap(6);
-        lblInfoAmbiente.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        painelAtalhosRodape.add(lblAtalhosTeclado);
-        painelAtalhosRodape.add(Box.createVerticalStrut(6));
-        painelAtalhosRodape.add(lblInfoAmbiente);
-
-        painelConteudoPrincipal.add(painelAtalhosRodape);
-
+   
         // ==========================================
         // INTERATIVIDADE (METAS E FILTRO DE COMPRAS)
         // ==========================================

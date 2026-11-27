@@ -71,8 +71,6 @@ public class PainelPrincipal {
         lblLogoSistema.setAlignmentY(Component.CENTER_ALIGNMENT);
         painelBarraSuperior.add(lblLogoSistema);
 
-        painelBarraSuperior.add(Box.createRigidArea(new Dimension(14, 20)));
-
         FontIcon iconeImportar = FontIcon.of(FontAwesomeSolid.FILE_IMPORT, 11, new Color(51, 65, 85));
         JButton btnImportarLista = new JButton("Importar Lista (.txt)", iconeImportar);
         btnImportarLista.setAlignmentY(Component.CENTER_ALIGNMENT);
@@ -281,17 +279,7 @@ public class PainelPrincipal {
         lblTituloNovoItem.setFont(new Font("SansSerif", Font.BOLD, 16));
         lblTituloNovoItem.setIconTextGap(8);
 
-        JLabel lblAtalhoF2 = new JLabel("F2");
-        lblAtalhoF2.setFont(new Font("Monospaced", Font.BOLD, 11));
-        lblAtalhoF2.setForeground(new Color(71, 85, 105));
-        lblAtalhoF2.setOpaque(true);
-        lblAtalhoF2.setBackground(corFundoPagina);
-        lblAtalhoF2.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(203, 213, 225)),
-                BorderFactory.createEmptyBorder(2, 6, 2, 6)));
-
         painelTituloNovoItem.add(lblTituloNovoItem);
-        painelTituloNovoItem.add(lblAtalhoF2);
         cabecalhoNovoItem.add(painelTituloNovoItem, BorderLayout.WEST);
 
         painelNovoItem.add(cabecalhoNovoItem, BorderLayout.NORTH);
